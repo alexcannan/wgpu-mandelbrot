@@ -407,9 +407,7 @@ fn main() {
                         * 0.1
                         * match delta {
                             winit::event::MouseScrollDelta::LineDelta(_, delta) => delta,
-                            winit::event::MouseScrollDelta::PixelDelta(_) => {
-                                panic!("expected LineDelta, got PixelDelta")
-                            }
+                            winit::event::MouseScrollDelta::PixelDelta(position) => (position.y / 1000.0 as f64) as f32,
                         };
                     zoom_changed = true;
                     zoom_buffer.write(&queue, zoom);
